@@ -261,3 +261,10 @@ examples/realRobots/UnitreeG1_WholeBody/sdk_tools/SonicStar
 examples/realRobots/UnitreeG1_WholeBody/sdk_tools/sonicstar_wbc_deployment_reference
 
 local/
+
+# SoccerDribble demo: isolated venv + PPO training artifacts
+examples/simBenchmarks/SoccerDribble/train_files/.venv/
+examples/simBenchmarks/SoccerDribble/.venv_test/
+examples/simBenchmarks/SoccerDribble/train_files/runs/
+examples/simBenchmarks/SoccerDribble/eval_files/*.mp4
+!examples/simBenchmarks/SoccerDribble/eval_files/dribble_success_demo.mp4

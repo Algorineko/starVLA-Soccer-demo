@@ -1,0 +1,52 @@
+<mujoco model="soccer_dribble">
+  <!--
+  Combines the Unitree G1 (BSD-3, see ../UNITREE_RL_GYM_LICENSE) with a
+  small soccer field for the dribbling demo. Field is intentionally
+  undersized (8m x 6m) relative to a real pitch to keep episodes short;
+  boundaries are enforced in Python (soccer_env.py), not as physical walls.
+  The target circle is a mocap body so the env can relocate it every
+  reset without recompiling the model.
+  -->
+  <include file="g1_description/g1_12dof.xml"/>
+
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81" cone="elliptic"/>
+
+  <statistic center="0 0 1.0" extent="4"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.15 0.15 0.15" specular="0.6 0.6 0.6"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="-140" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="flat" rgb1="0 0 0" rgb2="0 0 0" width="512" height="3072"/>
+    <texture name="field_tex" type="2d" builtin="checker" width="512" height="512"
+              rgb1="0.20 0.55 0.20" rgb2="0.24 0.62 0.24" mark="edge" markrgb="0.9 0.9 0.9"/>
+    <material name="field_mat" texture="field_tex" texrepeat="8 6" texuniform="true" reflectance="0.0"/>
+    <material name="ball_mat" rgba="0.95 0.95 0.95 1"/>
+    <material name="target_mat" rgba="1.0 0.2 0.2 0.55"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 4" dir="0 0 -1" directional="true"/>
+    <camera name="topdown" pos="0 0 9" xyaxes="1 0 0 0 1 0"/>
+    <camera name="sideline" pos="0 -6 2.5" xyaxes="1 0 0 0 0.4 1"/>
+
+    <!-- 8m x 6m field, rendered only (MuJoCo planes collide as infinite regardless of size) -->
+    <geom name="field" type="plane" size="4 3 0.1" material="field_mat" friction="0.8 0.05 0.05"/>
+
+    <!-- Soccer ball: FIFA-ish scale (radius 0.11m, mass 0.43kg) -->
+    <body name="ball" pos="1.0 0 0.11">
+      <freejoint name="ball_joint"/>
+      <geom name="ball_geom" type="sphere" size="0.11" mass="0.43" material="ball_mat"
+            friction="0.6 0.05 0.05" solref="-800 -1.5" solimp="0.95 0.99 0.001"/>
+    </body>
+
+    <!-- Target circle marker: visual only (contype/conaffinity 0), repositioned via mocap each reset -->
+    <body name="target_marker" mocap="true" pos="2.5 2.0 0.002">
+      <geom name="target_geom" type="cylinder" size="0.5 0.001" material="target_mat"
+            contype="0" conaffinity="0"/>
+    </body>
+  </worldbody>
+</mujoco>

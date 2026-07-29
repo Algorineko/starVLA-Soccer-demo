@@ -1,0 +1,14 @@
+# Isolated from starVLA's main conda env — install into its own venv
+# (see setup_env.sh). mujoco/gymnasium/stable-baselines3 are never imported
+# by starVLA's core training/inference code, only by this standalone demo.
+#
+# torch is intentionally NOT listed here: setup_env.sh installs the CPU
+# wheel first (via download.pytorch.org's cpu index) since motion.pt only
+# needs CPU inference, then installs everything below against it.
+mujoco==3.10.0
+gymnasium>=0.29
+stable-baselines3[extra]>=2.4.0
+tensorboard
+pyyaml
+numpy<2
+imageio[ffmpeg]
