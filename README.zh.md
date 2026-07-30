@@ -55,7 +55,7 @@ Unitree G1 人形机器人，一个用 **RL（PPO）训练的小型 MLP"决策�
 0.75-0.85 附近；`rollout/ep_len_mean` 从约 90 步降到约 60 步，说明成功的
 episode 不仅更多，完成速度也更快。
 
-![训练曲线](train_files/runs/ppo_v1/training_curves.png)
+![训练曲线](examples/simBenchmarks/SoccerDribble/train_files/runs/ppo_v1/training_curves.png)
 
 *（如需在进一步训练后重新生成，运行 `python train_files/plot_training_curves.py
 --logdir train_files/runs/ppo_v1`——它读取的是 TensorBoard 事件文件，这些文件
@@ -71,9 +71,10 @@ episode 不仅更多，完成速度也更快。
 修复方式是让这一项无条件生效（它只会在真正有进展时才变宽,不会被"不碰球"这种
 行为白嫖,因为球没被碰到时 Δdist_ball_target 本身就约等于 0）。
 
-一段来自 300 万步模型的成功带球录像位于
-`eval_files/dribble_success_demo.mp4`，录制方式与下方"用法"中的 `--save-video`
-示例相同。
+一段来自 300 万步模型的成功带球录像，录制方式与下方"用法"中的 `--save-video`
+示例相同：
+
+<video src="examples/simBenchmarks/SoccerDribble/eval_files/dribble_success_demo.mp4" controls width="480"></video>
 
 ## 架构
 

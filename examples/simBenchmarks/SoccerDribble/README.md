@@ -87,9 +87,10 @@ unconditional (it only widens *when* progress gets credited; it can't be
 farmed by not touching the ball, since Δdist_ball_target is ~0 while the
 ball is untouched).
 
-A recorded successful rollout from the 3M-step model is at
-`eval_files/dribble_success_demo.mp4`, captured the same way as the
-`--save-video` example below.
+A recorded successful rollout from the 3M-step model, captured the same way
+as the `--save-video` example below:
+
+<video src="eval_files/dribble_success_demo.mp4" controls width="480"></video>
 
 ## Architecture
 
