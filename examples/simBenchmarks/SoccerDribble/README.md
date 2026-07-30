@@ -88,9 +88,10 @@ farmed by not touching the ball, since Δdist_ball_target is ~0 while the
 ball is untouched).
 
 A recorded successful rollout from the 3M-step model, captured the same way
-as the `--save-video` example below:
+as the `--save-video` example below (GIF for GitHub rendering; the source
+`.mp4` is at `eval_files/dribble_success_demo.mp4`):
 
-<video src="eval_files/dribble_success_demo.mp4" controls width="480"></video>
+![dribble success demo](eval_files/dribble_success_demo.gif)
 
 ## Architecture
 

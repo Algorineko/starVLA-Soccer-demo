@@ -72,9 +72,10 @@ episode 不仅更多，完成速度也更快。
 行为白嫖,因为球没被碰到时 Δdist_ball_target 本身就约等于 0）。
 
 一段来自 300 万步模型的成功带球录像，录制方式与下方"用法"中的 `--save-video`
-示例相同：
+示例相同（为了能在 GitHub 上正常渲染，这里用 GIF；原始 `.mp4` 文件位于
+`examples/simBenchmarks/SoccerDribble/eval_files/dribble_success_demo.mp4`）：
 
-<video src="examples/simBenchmarks/SoccerDribble/eval_files/dribble_success_demo.mp4" controls width="480"></video>
+![带球成功演示](examples/simBenchmarks/SoccerDribble/eval_files/dribble_success_demo.gif)
 
 ## 架构
 
